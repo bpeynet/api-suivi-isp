@@ -4,6 +4,10 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Illuminate\Database\Eloquent\RelationNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -43,11 +47,40 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Exception  $e
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $exception)
+    public function render($request, Exception $e)
     {
-        return parent::render($request, $exception);
+			if ($e instanceof MethodNotAllowedHttpException || $e instanceof NotFoundHttpException) {
+				return response()->json([
+										'message' => "Requête incorrecte",
+										'infos' => $request->getMethod()." ".$request->getUri()
+												], 405);
+			} elseif ($e instanceof RelationNotFoundException) {
+				return response()->json([
+										'message' => "Les relations demandées ne sont pas correctes.",
+										'infos' => $e->getMessage()
+												], 404);
+			} elseif ($e instanceof HttpException) {
+				return response()->json([
+										'message' => "Requête impossible à traiter.",
+										'infos' => $e->getMessage()
+												], 404);
+			} elseif ($e instanceof FatalErrorException || $e instanceof QueryException) {
+				return response()->json([
+										'message' => "Erreur de l'API au cours du traitement.",
+										'infos' => $e->getMessage()
+												], 500);
+			} elseif ($e instanceof ErrorException) {
+				return response()->json([
+										'message' => "Erreur de l'API au cours du traitement.",
+										'infos' => $e->getMessage()
+												], 500);
+			} elseif (method_exists($e, 'render') && $response = $e->render($request)) {
+				return $response;
+			} else {
+				return parent::render($request, $e);
+			}
     }
 }

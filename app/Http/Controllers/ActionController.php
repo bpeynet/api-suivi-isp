@@ -13,7 +13,16 @@ class ActionController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function get(Request $request) {
-		return Action::all();
+		$relations = [];
+		if ($request->has('relations') && !empty($request->get('relations'))) {
+			$relations_param = $request->get('relations');
+			if (is_string($relations_param)) {
+				$relations = explode(',', $relations_param);
+			} elseif (is_array($relations_param)) {
+				$relations = $relations_param;
+			}
+		}
+		return Action::with($relations)->get();
 	}
 
 	/**
