@@ -4,25 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\Jalon;
 
-class JalonController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function get()
-    {
-        return Jalon::all();
-    }
+class JalonController extends Controller {
 
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Jalon $jalon)
-    {
-        return $jalon;
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function get(Request $request) {
+		return Jalon::all();
+	}
+
+	/**
+	 * Display the specified resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show(Jalon $jalon) {
+		return $jalon;
+	}
+
 }
