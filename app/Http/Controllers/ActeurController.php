@@ -63,7 +63,7 @@ class ActeurController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Acteur $acteur) {
-		//
+		$acteur->delete();
 	}
 
 }

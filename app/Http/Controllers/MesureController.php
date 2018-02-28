@@ -63,7 +63,7 @@ class MesureController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Mesure $mesure) {
-		//
+		$mesure->delete();
 	}
 
 }

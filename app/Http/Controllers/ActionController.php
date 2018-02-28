@@ -63,7 +63,7 @@ class ActionController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Action $action) {
-		//
+		$action->delete();
 	}
 
 }

@@ -63,7 +63,7 @@ class SupraController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Supra $supra) {
-		//
+		$supra->delete();
 	}
 
 }

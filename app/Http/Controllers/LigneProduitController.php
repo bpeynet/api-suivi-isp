@@ -63,7 +63,7 @@ class LigneProduitController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(LigneProduit $ligneproduit) {
-		//
+		$ligneproduit->delete();
 	}
 
 }

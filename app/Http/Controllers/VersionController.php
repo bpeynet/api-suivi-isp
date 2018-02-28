@@ -63,7 +63,7 @@ class VersionController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Version $version) {
-		//
+		$version->delete();
 	}
 
 }

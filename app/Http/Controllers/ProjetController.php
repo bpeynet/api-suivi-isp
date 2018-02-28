@@ -64,7 +64,7 @@ class ProjetController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Projet $projet) {
-		//
+		$projet->delete();
 	}
 
 }
