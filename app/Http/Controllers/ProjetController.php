@@ -32,8 +32,9 @@ class ProjetController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function post(Request $request) {
-		$analyse = Projet::create($request->all());
-		return response()->json($analyse, 201);
+		$projet = new Projet($request->all());
+		$projet->saveCustom($request->all());
+		return response()->json($projet, 201);
 	}
 
 	/**
