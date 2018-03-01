@@ -50,9 +50,9 @@ class CreateProjetsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('id_ligne_produit');
             $table->mediumText('programme')->nullable();
-            $table->mediumText('code');
+            $table->string('code', 100)->default('');
             $table->mediumText('nom');
-            $table->mediumText('chef');
+            $table->string('chef', 200)->default('');
             $table->mediumText('accompagnateur_CGI');
             $table->text('commentaires')->nullable();
             $table->dateTime('date_creation');
