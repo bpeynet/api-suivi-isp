@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Database\Eloquent\Model;
+use App\Exceptions\ElementSavingException;
 
-class Projet extends Model {
+class Projet extends AbstractModel {
 	
 	const CREATED_AT = 'date_creation';
 	const UPDATED_AT = 'date_derniere_modif';
@@ -12,6 +12,8 @@ class Projet extends Model {
 			'programme', 'code', 'nom', 'chef', 'commentaires'
 	];
 	protected $hidden = ['pivot'];
+	protected $allMMRelations = ['versions', 'mesures'];
+	protected $all11Relations = ['ligne_produit'];
 
 	public function versions() {
 		return $this->hasMany('App\Models\Version', 'id_projet');
@@ -24,4 +26,15 @@ class Projet extends Model {
 	public function mesures() {
 		return $this->hasMany('App\Models\Mesure', 'id_projet');
 	}
+	
+	public function saveCustom(array $parameters) {
+		if (!$this->getAttribute('id_ligne_produit')) {
+			throw new ElementSavingException("Une ligne produit doit être fournie.");
+		}
+		if (!$this->getAttribute('nom')) {
+			throw new ElementSavingException("Un nom doit être fourni.");
+		}
+		parent::saveCustom($parameters);
+	}
+	
 }
