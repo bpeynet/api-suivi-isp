@@ -10,6 +10,7 @@ class SupraController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function get(Request $request) {
@@ -28,7 +29,7 @@ class SupraController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function post(Request $request) {
@@ -38,7 +39,7 @@ class SupraController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Supra $supra
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Supra $supra) {
@@ -48,8 +49,8 @@ class SupraController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
+	 * @param  \Illuminate\Http\Request $request
+	 * @param  Supra $supra
 	 * @return \Illuminate\Http\Response
 	 */
 	public function put(Request $request, Supra $supra) {
@@ -59,7 +60,7 @@ class SupraController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  Supra $supra
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Supra $supra) {

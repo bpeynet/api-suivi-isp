@@ -10,6 +10,7 @@ class VersionController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function get(Request $request) {
@@ -28,7 +29,7 @@ class VersionController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function post(Request $request) {
@@ -38,7 +39,7 @@ class VersionController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Version $version
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Version $version) {
@@ -48,8 +49,8 @@ class VersionController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
+	 * @param  \Illuminate\Http\Request $request
+	 * @param  Version $version
 	 * @return \Illuminate\Http\Response
 	 */
 	public function put(Request $request, Version $version) {
@@ -59,7 +60,7 @@ class VersionController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  Version $version
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(Version $version) {

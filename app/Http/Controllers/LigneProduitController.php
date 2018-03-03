@@ -10,6 +10,7 @@ class LigneProduitController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function get(Request $request) {
@@ -28,7 +29,7 @@ class LigneProduitController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function post(Request $request) {
@@ -38,7 +39,7 @@ class LigneProduitController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  LigneProduit $ligneproduit
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(LigneProduit $ligneproduit) {
@@ -48,8 +49,8 @@ class LigneProduitController extends Controller {
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
+	 * @param  \Illuminate\Http\Request $request
+	 * @param  LigneProduit $ligneproduit
 	 * @return \Illuminate\Http\Response
 	 */
 	public function put(Request $request, LigneProduit $ligneproduit) {
@@ -59,7 +60,7 @@ class LigneProduitController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
+	 * @param  LigneProduit $ligneproduit
 	 * @return \Illuminate\Http\Response
 	 */
 	public function delete(LigneProduit $ligneproduit) {

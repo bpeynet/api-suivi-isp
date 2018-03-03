@@ -40,7 +40,7 @@ class ProjetController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  int  $id
+	 * @param  Projet $projet
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Projet $projet) {

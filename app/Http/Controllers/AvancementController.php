@@ -10,6 +10,7 @@ class AvancementController extends Controller {
 	/**
 	 * Display a listing of the resource.
 	 *
+	 * @param  \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function get(Request $request) {
@@ -28,6 +29,7 @@ class AvancementController extends Controller {
 	/**
 	 * Display the specified resource.
 	 *
+	 * @param  Avancement $avancement
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Avancement $avancement) {
