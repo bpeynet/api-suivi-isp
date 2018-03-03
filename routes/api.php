@@ -50,11 +50,11 @@ Route::prefix('suivis')->group(function() {
 	Route::get('', 'SuiviController@get');
 	Route::get('{suivi}', 'SuiviController@show');
 });
-Route::prefix('avancement')->group(function() {
+Route::prefix('avancements')->group(function() {
 	Route::get('', 'AvancementController@get');
 	Route::get('{avancement}', 'AvancementController@show');
 });
-Route::prefix('projet')->group(function() {
+Route::prefix('projets')->group(function() {
 	Route::get('', 'ProjetController@get');
 	Route::post('', 'ProjetController@post');
 	Route::put('{projet}', 'ProjetController@put');
