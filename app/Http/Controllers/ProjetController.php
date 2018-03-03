@@ -51,11 +51,13 @@ class ProjetController extends Controller {
 	 * Update the specified resource in storage.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
+	 * @param  Projet $projet
 	 * @return \Illuminate\Http\Response
 	 */
 	public function put(Request $request, Projet $projet) {
-		//
+		$projet->fill($request->all());
+		$projet->updateWithRelations($request->all());
+		return response()->json($projet, 200);
 	}
 
 	/**

@@ -66,26 +66,19 @@ abstract class AbstractModel extends Model {
 	}
 
 	public function updateWithRelations(array $params) {
-		foreach ($this->allMMRelations as $value) {
-			if (array_key_exists($value, $params)) {
-				$this->$value()->sync($this->extractIDs($params[$value]));
+		foreach ($this->all11Relations as $relation) {
+			if (array_key_exists($relation, $params) && $params[$relation]) {
+				$class_name = "\\App\\Models\\" . static::$equivalences[$relation];
+				$object = $class_name::find($params[$relation]['id']);
+				$this->$relation()->associate($object);
 			}
-		}
-		foreach ($this->all11Relations as $value) {
-			if (array_key_exists($value, $params) && $params[$value]) {
-				$class_name = "\\App\\Models\\" . static::$equivalences[$value];
-				$object = $class_name::find($params[$value]['id']);
-				$this->$value()->associate($object);
-			}
-		}
-		if (in_array('analyse', $this->all11Relations)) {
-			$this->analyse->touch();
 		}
 		parent::update();
-	}
-
-	public function estUneAnalyse() {
-		return get_class($this) == 'App\\Models\\Analyse';
+		foreach ($this->allMMRelations as $relation) {
+			if (array_key_exists($relation, $params)) {
+				$this->$relation()->sync($this->extractIDs($params[$relation]));
+			}
+		}
 	}
 
 }

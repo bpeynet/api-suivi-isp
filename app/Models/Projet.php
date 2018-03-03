@@ -36,5 +36,12 @@ class Projet extends AbstractModel {
 		}
 		parent::saveCustom($parameters);
 	}
+
+	public function updateCustom(array $params) {
+		if (!$this->getAttribute('libelle')) {
+			throw new ElementSavingException(static::$strings["libelle-requis"]);
+		}
+		parent::updateWithRelations($params);
+	}
 	
 }
