@@ -21,14 +21,14 @@ Route::get('', function() {
 	return '';
 });
 
-Route::prefix('supra')->group(function() {
+Route::prefix('supras')->group(function() {
 	Route::get('', 'SupraController@get');
 	Route::get('{supra}', 'SupraController@show');
 	Route::post('', 'SupraController@post');
 	Route::put('{supra}', 'SupraController@put');
 	Route::delete('{supra}', 'SupraController@delete');
 });
-Route::prefix('ligne_produit')->group(function() {
+Route::prefix('lignes_produit')->group(function() {
 	Route::get('', 'LigneProduitController@get');
 	Route::get('{ligneproduit}', 'LigneProduitController@show');
 	Route::post('', 'LigneProduitController@post');

@@ -12,7 +12,7 @@ class Supra extends Model {
 	];
 	protected $hidden = ['pivot'];
 
-	public function ligne_produit() {
+	public function lignes_produit() {
 		return $this->hasMany('App\Models\LigneProduit', 'id_supra');
 	}
 }
