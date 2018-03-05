@@ -7,6 +7,10 @@ use App\Exceptions\ElementSavingException;
 
 abstract class AbstractModel extends Model {
 
+	static $equivalences = [
+			"ligne_produit" => "LigneProduit"
+	];
+
 	protected $allMMRelations = [];
 	protected $all11Relations = [];
 
