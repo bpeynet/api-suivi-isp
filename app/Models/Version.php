@@ -18,15 +18,15 @@ class Version extends Model {
 	}
 
 	public function jalon() {
-		return $this->hasOne('App\Models\Jalon', 'id_jalon');
+		return $this->belongsTo('App\Models\Jalon', 'id_jalon');
 	}
 	
 	public function type_de_suivi() {
-		return $this->hasOne('App\Models\Suivi', 'id_type_de_suivi');
+		return $this->belongsTo('App\Models\Suivi', 'id_type_de_suivi');
 	}
 	
 	public function avancement() {
-		return $this->hasOne('App\Models\Avancement', 'avancement');
+		return $this->belongsTo('App\Models\Avancement', 'avancement');
 	}
 	
 	public function actions() {
