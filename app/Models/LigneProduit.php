@@ -17,7 +17,15 @@ class LigneProduit extends Model {
 		return $this->belongsTo('App\Models\Supra', 'id_supra');
 	}
 
-	public function inge_secu() {
-		return $this->belongsTo('App\Models\Acteur', 'id_inge_secu');
+	public function inges_secu() {
+		return $this->belongsToMany('App\Models\Acteur', 'ingessecu_lignesproduit', 'id_ligne_produit', 'id_ingesecu');
+	}
+
+	public function rsis_fab() {
+		return $this->belongsToMany('App\Models\Acteur', 'rsisfab_lignesproduit', 'id_ligne_produit', 'id_rsifab');
+	}
+
+	public function architectes() {
+		return $this->belongsToMany('App\Models\Acteur', 'architectes_lignesproduit', 'id_ligne_produit', 'id_architecte');
 	}
 }
